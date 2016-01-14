@@ -77,7 +77,7 @@ function test {
 
 function run {
   if [ ! -f "$BINARY_NAME" ]; then
-    echo "Application not found. Have you built it yet? (Try running './go build'.)"
+    echo "Application not found. Have you built it yet? (Try running './go.sh build'.)"
   fi
 
   "$BINARY_NAME" "$@"

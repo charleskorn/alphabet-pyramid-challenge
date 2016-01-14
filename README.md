@@ -2,7 +2,7 @@
 
 For all your text-based pyramid needs.
 
-    $ ./go run K
+    $ ./go.sh run K
               A
              B B
             C   C
@@ -29,18 +29,18 @@ For all your text-based pyramid needs.
 
 * Go 1.5.3
 
-Run `./go check` to test that everything looks OK.
+Run `./go.sh check` to test that everything looks OK.
 
 ## Building
 
-* Run `./go build` to build
+* Run `./go.sh build` to build
 
 ## Running
 
 * Build application
-* Run `./go run <letter>` to run the application (replace `<letter>` with your letter of choice)
+* Run `./go.sh run <letter>` to run the application (replace `<letter>` with your letter of choice)
 
 ## Testing
 
-* Run `./go setup` to pull down dependencies if you haven't already (only need to do this once)
-* Run `./go test` to build and run the tests
+* Run `./go.sh setup` to pull down dependencies if you haven't already (only need to do this once)
+* Run `./go.sh test` to build and run the tests
