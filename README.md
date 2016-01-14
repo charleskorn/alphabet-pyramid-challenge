@@ -33,7 +33,6 @@ Run `./go check` to test that everything looks OK.
 
 ## Building
 
-* Run `./go setup` to pull down dependencies (only need to do this once)
 * Run `./go build` to build
 
 ## Running
