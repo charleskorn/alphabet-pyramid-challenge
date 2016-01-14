@@ -4,6 +4,7 @@ set -e
 set -u
 
 GO_VERSION="1.5.3"
+BINARY_NAME="./alphabet-pyramid-challenge"
 
 function main {
   case "$1" in
@@ -67,7 +68,7 @@ function setup {
 }
 
 function build {
-  go build
+  go build -o "$BINARY_NAME"
 }
 
 function test {
@@ -75,11 +76,11 @@ function test {
 }
 
 function run {
-  if [ ! -f ./alphabet-pyramid-challenge ]; then
+  if [ ! -f "$BINARY_NAME" ]; then
     echo "Application not found. Have you built it yet? (Try running './go build'.)"
   fi
 
-  ./alphabet-pyramid-challenge "$@"
+  "$BINARY_NAME" "$@"
 }
 
 main "$@"
