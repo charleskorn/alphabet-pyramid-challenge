@@ -3,10 +3,14 @@
 set -e
 set -u
 
-GO_VERSION="1.5.2"
+GO_VERSION="1.5.3"
 
 function main {
   case "$1" in
+
+  check)
+    check
+    ;;
 
   setup)
     setup
@@ -34,20 +38,31 @@ function main {
 
 function help {
   echo "Usage:"
-  echo " setup        checks prerequisites are installed and fetches external dependencies"
+  echo " check        checks prerequisites are installed"
+  echo " setup        fetches external dependencies"
   echo " build        builds the application"
-  echo " test         runs the test suite"
+  echo " test         builds and runs the test suite"
   echo " run <args>   run the application (<args> are passed through to the application, must build first)"
 }
 
-function setup {
-  VERSION_STRING=$(go version)
-
-  if [[ "$VERSION_STRING" != "go version go$GO_VERSION "* ]]; then
-    echo "Go version $GO_VERSION not found. (Try running 'brew install go'.)"
+function check {
+  path_to_go=$(which go || echo "")
+  if [ ! -x "$path_to_go" ]; then
+    echo "Go not found. (Try running 'brew update && brew install go'.)"
     exit 1
   fi
 
+  version_string=$(go version)
+
+  if [[ "$version_string" != "go version go$GO_VERSION "* ]]; then
+    echo "Go version $GO_VERSION not found."
+    echo "If you have a more recent version of Go installed, you can ignore this message. (Run 'go version' to check.)"
+    exit 1
+  fi
+
+  echo "Everything looks OK!"
+}
+function setup {
   go get -t -v
 }
 
